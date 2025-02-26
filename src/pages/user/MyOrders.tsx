@@ -1,0 +1,101 @@
+"use client";
+
+import { Card } from "@/components/ui/card";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { selectCurrentUser } from "@/redux/features/auth/authSlice";
+import { useGetOrdersQuery } from "@/redux/features/order/order";
+import { useAppSelector } from "@/redux/hook";
+interface Order {
+  _id: string;
+  user: {
+    email: string;
+  };
+  transaction?: {
+    id?: string;
+  };
+  products?: {
+    product?: {
+      title?: string;
+    };
+  }[];
+  totalPrice?: number;
+  status?: string;
+  createdAt?: string;
+}
+const MyOrders = () => {
+  const { data } = useGetOrdersQuery(undefined, {
+    pollingInterval: 30000,
+    refetchOnFocus: true,
+    refetchOnMountOrArgChange: true,
+    refetchOnReconnect: true,
+  });
+  const orders = data?.data || [];
+  const user = useAppSelector(selectCurrentUser);
+  console.log(user);
+  const filteredOrders = orders.filter(
+    (order: Order) => order.user?.email === user?.email
+  );
+  console.log(filteredOrders);
+
+  return (
+    <div className="max-w-4xl mx-auto p-4">
+      <Card className="p-6">
+        <Table className=" ">
+          <TableHeader className=" text-base lg:text-xl">
+            <TableRow>
+              <TableHead className="text-[#00a76b]">Product Title</TableHead>
+              <TableHead className="text-[#00a76b]">Transaction ID</TableHead>
+              <TableHead className="text-[#00a76b]">Total Price (৳)</TableHead>
+              <TableHead className="text-[#00a76b]">Status</TableHead>
+              <TableHead className="text-[#00a76b]">Order Date</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {filteredOrders.length > 0 ? (
+              filteredOrders.map((order: Order) => (
+                <TableRow key={order._id}>
+                  <TableCell className=" lg:text-base">
+                    {order.products && order.products.length > 0
+                      ? order.products
+                          .map((item) => item.product?.title || "N/A")
+                          .join(", ")
+                      : "N/A"}
+                  </TableCell>
+                  <TableCell className=" lg:text-base">
+                    {order.transaction?.id || "N/A"}
+                  </TableCell>
+                  <TableCell className=" lg:text-base">
+                    {order.totalPrice ?? "N/A"}
+                  </TableCell>
+                  <TableCell className=" lg:text-base">
+                    {order.status || "N/A"}
+                  </TableCell>
+                  <TableCell className=" lg:text-base">
+                    {order.createdAt
+                      ? new Date(order.createdAt).toLocaleDateString()
+                      : "N/A"}
+                  </TableCell>
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell colSpan={5} className="text-center">
+                  No orders found
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </Card>
+    </div>
+  );
+};
+
+export default MyOrders;
