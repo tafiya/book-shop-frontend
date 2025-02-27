@@ -111,10 +111,11 @@ The **Book Shop Application** is a full-stack web application designed to provid
 - `DELETE /api/orders/:id` - Cancel order## Video Explanation
   
 ## Provide a link to a video explaining the API design and functionality:  
-[Video Link](https://www.loom.com/share/1e21ffbcc78b4713a962a5235090e3bd?sid=b83166a9-14e1-46f1-b9b0-8265fdfe2ded)
+Part-1:[Video Link](https://www.loom.com/share/5214f56b3b1142a09fdf8ea881a77462?sid=960a8e0a-53b3-4277-b103-f2773fbb5bb0)
+Part-2:[Video Link](https://www.loom.com/share/eee6700c80794e1b851692b1ed94901a?sid=0adc7164-7d5c-4aa9-9ff0-c6b1e3c49db7)
 
 ## Live Link
 Provide the link to the live deployed application:  
-[Live Link](https://book-shop-server-githubnew.vercel.app/)
-
-  
+ [Live Link](https://book-shop-frontend-project.vercel.app/)
+## server-side GitHub Link
+   [Live Link](https://github.com/tafiya/book-shop-server)
