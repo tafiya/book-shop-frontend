@@ -14,7 +14,6 @@ import { useGetAllProductQuery } from "@/redux/features/products/productSlice";
 import { X } from "lucide-react";
 
 const AllProduct = () => {
-  const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
   const [author, setAuthor] = useState("");
   const [category, setCategory] = useState("");
@@ -22,7 +21,7 @@ const AllProduct = () => {
   const [priceSort, setPriceSort] = useState("");
 
   const queryParams = [
-    { name: "page", value: page },
+    { name: "page", value: 1 },
     { name: "limit", value: "10" },
     { name: "sort", value: priceSort || "_id" },
     ...(search ? [{ name: "searchTerm", value: search }] : []),
@@ -155,7 +154,7 @@ const AllProduct = () => {
         {/* {isFetching && <Skeleton className="h-32 w-full" />} */}
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-wrap gap-16 justify-center my-10">
-            {filteredProducts?.length > 0
+            {filteredProducts?.length
               ? filteredProducts.map((product, i) => (
                   <ProductCard key={i} product={product}></ProductCard>
                 ))

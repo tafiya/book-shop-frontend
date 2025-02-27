@@ -3,8 +3,9 @@ import { Button } from "../ui/button";
 import "./Banner.css";
 
 // Import Swiper styles
-import "swiper/css";
-import "swiper/css/effect-cards";
+// import "swiper/css";
+
+// import "swiper/css/effect-cards";
 // import "./styles.css";
 
 // import required modules
