@@ -42,7 +42,7 @@ interface Product {
 
 const ManageProducts: React.FC = () => {
   // const dispatch = useDispatch();
-  const { data } = useGetAllProductQuery(undefined, {
+  const { data, isFetching } = useGetAllProductQuery(undefined, {
     pollingInterval: 30000,
     refetchOnFocus: true,
     refetchOnMountOrArgChange: true,
@@ -104,121 +104,134 @@ const ManageProducts: React.FC = () => {
   }
 
   return (
-    <Card className="p-6  mx-auto">
-      <div className="flex justify-between mb-4">
-        <Button className="mb-4" onClick={toggleSort}>
-          Sort by Price ({sortOrder})
-        </Button>
-        <Button onClick={() => setIsAddModalOpen(true)}>Add Book</Button>
-      </div>
-
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead>Title</TableHead>
-            <TableHead>Author</TableHead>
-            <TableHead>Category</TableHead>
-            <TableHead>Description</TableHead>
-            <TableHead>Price</TableHead>
-            <TableHead>inStock</TableHead>
-            <TableHead>Quantity</TableHead>
-            <TableHead>Action</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {products.map((product: IProduct) => (
-            <TableRow key={product._id}>
-              <TableCell>{product.title}</TableCell>
-              <TableCell>{product.author}</TableCell>
-              <TableCell>{product.category}</TableCell>
-              <TableCell>{product.description}</TableCell>
-              <TableCell>{product.price}</TableCell>
-              <TableCell>
-                {product.inStock ? (
-                  <FaCircleCheck color="green" />
-                ) : (
-                  <FaWindowClose color="red" />
-                )}
-              </TableCell>
-              <TableCell>{product.quantity}</TableCell>
-              <TableCell className="flex gap-2">
-                <Button
-                  variant="destructive"
-                  onClick={() => handleRemove(product._id)}
-                >
-                  Remove
-                </Button>
-                <Button
-                  variant="secondary"
-                  onClick={() => handleUpdate(product)}
-                >
-                  Update
-                </Button>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-      {isModalOpen && selectedProduct && (
-        <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Update Book</DialogTitle>
-            </DialogHeader>
-            <div className="space-y-4">
-              <Label>Title</Label>
-              <Input
-                name="title"
-                value={selectedProduct.title}
-                onChange={handleInputChange}
-              />
-              <Label>Author</Label>
-              <Input
-                name="author"
-                value={selectedProduct.author}
-                onChange={handleInputChange}
-              />
-
-              <Label>Price</Label>
-              <Input
-                name="price"
-                type="number"
-                value={selectedProduct.price}
-                onChange={handleInputChange}
-              />
-              <Label>
-                <Checkbox
-                  name="inStock"
-                  checked={selectedProduct.inStock}
-                  onCheckedChange={(checked: boolean) =>
-                    handleCheckboxChange(checked)
-                  }
-                />{" "}
-                In Stock
-              </Label>
-              <Label>Quantity</Label>
-              <Input
-                name="quantity"
-                type="number"
-                value={selectedProduct.quantity}
-                onChange={handleInputChange}
-              />
-              <Label>Description</Label>
-              <Input
-                name="description"
-                value={selectedProduct.description}
-                onChange={handleInputChange}
-              />
-              <Button onClick={handleSave}>Save Changes</Button>
-            </div>
-          </DialogContent>
-        </Dialog>
+    <>
+      {isFetching && (
+        <div className="flex justify-center items-center h-32">
+          <button type="button" className="bg-[#00a76b] ..." disabled>
+            <svg
+              className="mr-3 size-5 animate-spin ..."
+              viewBox="0 0 24 24"
+            ></svg>
+            Loading....
+          </button>
+        </div>
       )}
-      <AddBookModal
-        isOpen={isAddModalOpen}
-        onClose={() => setIsAddModalOpen(false)}
-      />
-    </Card>
+      <Card className="p-6  mx-auto">
+        <div className="flex justify-between mb-4">
+          <Button className="mb-4" onClick={toggleSort}>
+            Sort by Price ({sortOrder})
+          </Button>
+          <Button onClick={() => setIsAddModalOpen(true)}>Add Book</Button>
+        </div>
+
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Title</TableHead>
+              <TableHead>Author</TableHead>
+              <TableHead>Category</TableHead>
+              <TableHead>Description</TableHead>
+              <TableHead>Price</TableHead>
+              <TableHead>inStock</TableHead>
+              <TableHead>Quantity</TableHead>
+              <TableHead>Action</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {products.map((product: IProduct) => (
+              <TableRow key={product._id}>
+                <TableCell>{product.title}</TableCell>
+                <TableCell>{product.author}</TableCell>
+                <TableCell>{product.category}</TableCell>
+                <TableCell>{product.description}</TableCell>
+                <TableCell>{product.price}</TableCell>
+                <TableCell>
+                  {product.inStock ? (
+                    <FaCircleCheck color="green" />
+                  ) : (
+                    <FaWindowClose color="red" />
+                  )}
+                </TableCell>
+                <TableCell>{product.quantity}</TableCell>
+                <TableCell className="flex gap-2">
+                  <Button
+                    variant="destructive"
+                    onClick={() => handleRemove(product._id)}
+                  >
+                    Remove
+                  </Button>
+                  <Button
+                    variant="secondary"
+                    onClick={() => handleUpdate(product)}
+                  >
+                    Update
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+        {isModalOpen && selectedProduct && (
+          <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Update Book</DialogTitle>
+              </DialogHeader>
+              <div className="space-y-4">
+                <Label>Title</Label>
+                <Input
+                  name="title"
+                  value={selectedProduct.title}
+                  onChange={handleInputChange}
+                />
+                <Label>Author</Label>
+                <Input
+                  name="author"
+                  value={selectedProduct.author}
+                  onChange={handleInputChange}
+                />
+
+                <Label>Price</Label>
+                <Input
+                  name="price"
+                  type="number"
+                  value={selectedProduct.price}
+                  onChange={handleInputChange}
+                />
+                <Label>
+                  <Checkbox
+                    name="inStock"
+                    checked={selectedProduct.inStock}
+                    onCheckedChange={(checked: boolean) =>
+                      handleCheckboxChange(checked)
+                    }
+                  />{" "}
+                  In Stock
+                </Label>
+                <Label>Quantity</Label>
+                <Input
+                  name="quantity"
+                  type="number"
+                  value={selectedProduct.quantity}
+                  onChange={handleInputChange}
+                />
+                <Label>Description</Label>
+                <Input
+                  name="description"
+                  value={selectedProduct.description}
+                  onChange={handleInputChange}
+                />
+                <Button onClick={handleSave}>Save Changes</Button>
+              </div>
+            </DialogContent>
+          </Dialog>
+        )}
+        <AddBookModal
+          isOpen={isAddModalOpen}
+          onClose={() => setIsAddModalOpen(false)}
+        />
+      </Card>
+    </>
   );
 };
 

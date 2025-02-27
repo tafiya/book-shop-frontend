@@ -150,8 +150,19 @@ const AllProduct = () => {
             )}
           </div>
         </div>
+        {/* Loading State */}
+        {isFetching && (
+          <div className="flex justify-center items-center h-32">
+            <button type="button" className="bg-[#00a76b] ..." disabled>
+              <svg
+                className="mr-3 size-5 animate-spin ..."
+                viewBox="0 0 24 24"
+              ></svg>
+              Loading....
+            </button>
+          </div>
+        )}
 
-        {/* {isFetching && <Skeleton className="h-32 w-full" />} */}
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-wrap gap-16 justify-center my-10">
             {filteredProducts?.length

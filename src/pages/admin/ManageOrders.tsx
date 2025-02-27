@@ -26,7 +26,7 @@ interface Order {
 }
 
 const ManageOrders = () => {
-  const { data } = useGetOrdersQuery(undefined, {
+  const { data, isFetching } = useGetOrdersQuery(undefined, {
     pollingInterval: 30000,
     refetchOnFocus: true,
     refetchOnMountOrArgChange: true,
@@ -36,6 +36,17 @@ const ManageOrders = () => {
 
   return (
     <div>
+      {isFetching && (
+        <div className="flex justify-center items-center h-32">
+          <button type="button" className="bg-[#00a76b] ..." disabled>
+            <svg
+              className="mr-3 size-5 animate-spin ..."
+              viewBox="0 0 24 24"
+            ></svg>
+            Loading....
+          </button>
+        </div>
+      )}
       <Card className="p-6">
         <Table>
           <TableHeader className=" text-base lg:text-xl">

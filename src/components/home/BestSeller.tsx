@@ -3,7 +3,7 @@ import { IProduct } from "@/types/product";
 import ProductCard from "./ProductCard";
 
 const BestSeller = () => {
-  const { data, isLoading } = useGetAllProductQuery(undefined, {
+  const { data, isFetching } = useGetAllProductQuery(undefined, {
     pollingInterval: 30000,
     refetchOnFocus: true,
     refetchOnMountOrArgChange: true,
@@ -11,13 +11,24 @@ const BestSeller = () => {
   });
   const products: IProduct[] = data?.data || [];
 
-  if (isLoading) return <p>Loading...</p>;
+  // if (isLoading) return <p>Loading...</p>;
   return (
     <div className=" my-24 max-w-7xl mx-auto">
       <h1 className="text-3xl sm:text-3xl md:text-4xl xl:text-5xl text-center font-semibold lg:pb-20 pb-12">
         {" "}
         Best <span className=" text-[#00a76b]">Seller</span> Books
       </h1>
+      {isFetching && (
+        <div className="flex justify-center items-center h-32">
+          <button type="button" className="bg-[#00a76b] ..." disabled>
+            <svg
+              className="mr-3 size-5 animate-spin ..."
+              viewBox="0 0 24 24"
+            ></svg>
+            Loading....
+          </button>
+        </div>
+      )}
       <div className="flex flex-wrap justify-center gap-12">
         {products.slice(0, 4).map((product, i) => (
           <ProductCard key={i} product={product}></ProductCard>

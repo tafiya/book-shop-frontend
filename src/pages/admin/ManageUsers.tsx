@@ -16,7 +16,7 @@ import { TUser } from "@/types/product";
 import toast from "react-hot-toast";
 
 const ManageUsers = () => {
-  const { data, refetch } = useGetAllUsersQuery(undefined, {
+  const { data, refetch, isFetching } = useGetAllUsersQuery(undefined, {
     pollingInterval: 30000,
     refetchOnFocus: true,
     refetchOnMountOrArgChange: true,
@@ -41,38 +41,51 @@ const ManageUsers = () => {
   // };
 
   return (
-    <Card className="p-6  mx-auto">
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead>Picture</TableHead>
-            <TableHead>Name</TableHead>
-            <TableHead>Role</TableHead>
-            <TableHead>Email</TableHead>
-            <TableHead>Address</TableHead>
-            <TableHead>Phone No</TableHead>
-            <TableHead>Action</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {users.map((user: TUser) => (
-            <TableRow key={user._id}>
-              <TableCell>
-                {" "}
-                <img
-                  className="w-24 h-24 object-cover rounded-md"
-                  src={user?.userImg}
-                  alt={user.name}
-                />
-              </TableCell>
-              <TableCell>{user?.name}</TableCell>
-              <TableCell>{user?.role}</TableCell>
-              <TableCell>{user?.email}</TableCell>
-              <TableCell>{user?.address}</TableCell>
-              <TableCell>{user?.phone}</TableCell>
+    <>
+      {" "}
+      {isFetching && (
+        <div className="flex justify-center items-center h-32">
+          <button type="button" className="bg-[#00a76b] ..." disabled>
+            <svg
+              className="mr-3 size-5 animate-spin ..."
+              viewBox="0 0 24 24"
+            ></svg>
+            Loading....
+          </button>
+        </div>
+      )}
+      <Card className="p-6  mx-auto">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Picture</TableHead>
+              <TableHead>Name</TableHead>
+              <TableHead>Role</TableHead>
+              <TableHead>Email</TableHead>
+              <TableHead>Address</TableHead>
+              <TableHead>Phone No</TableHead>
+              <TableHead>Action</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {users.map((user: TUser) => (
+              <TableRow key={user._id}>
+                <TableCell>
+                  {" "}
+                  <img
+                    className="w-24 h-24 object-cover rounded-md"
+                    src={user?.userImg}
+                    alt={user.name}
+                  />
+                </TableCell>
+                <TableCell>{user?.name}</TableCell>
+                <TableCell>{user?.role}</TableCell>
+                <TableCell>{user?.email}</TableCell>
+                <TableCell>{user?.address}</TableCell>
+                <TableCell>{user?.phone}</TableCell>
 
-              <TableCell className="">
-                {/* {user.isBlocked ? (
+                <TableCell className="">
+                  {/* {user.isBlocked ? (
                   <Ban color="red" />
                 ) : (
                   <Button
@@ -82,18 +95,19 @@ const ManageUsers = () => {
                     <CircleCheckBig color="green" />
                   </Button>
                 )} */}
-                <Button
-                  variant="destructive"
-                  onClick={() => handleRemove(user._id)}
-                >
-                  Remove
-                </Button>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </Card>
+                  <Button
+                    variant="destructive"
+                    onClick={() => handleRemove(user._id)}
+                  >
+                    Remove
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </Card>
+    </>
   );
 };
 
