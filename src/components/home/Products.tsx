@@ -38,14 +38,15 @@ const Products = () => {
         ))}
       </div>
       <div className=" flex justify-center pt-12">
-        <Link to="/allBooks"></Link>
-        <Button
-          variant="outline"
-          className=" py-2  bg-[#00a76b] text-white hover:text-[#00a76b] text-base hover:border-[#00a76b] flex items-center"
-        >
-          <ReceiptText />
-          View All Books
-        </Button>
+        <Link to="/allBooks">
+          <Button
+            variant="outline"
+            className=" py-2  bg-[#00a76b] text-white hover:text-[#00a76b] text-base hover:border-[#00a76b] flex items-center"
+          >
+            <ReceiptText />
+            View All Books
+          </Button>
+        </Link>
       </div>
     </div>
   );
