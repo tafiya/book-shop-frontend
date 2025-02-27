@@ -153,7 +153,7 @@ const Navbar = () => {
                 </DropdownMenuItem>
                 {user.role == "Admin" ? (
                   <DropdownMenuItem>
-                    <Link to="/admin">DashBoard</Link>
+                    <Link to="/admin/myProfile">DashBoard</Link>
                   </DropdownMenuItem>
                 ) : (
                   <DropdownMenuItem>

@@ -92,12 +92,13 @@ const AdminDashboard = () => {
               </Link>
               <hr className=" my-6" />
 
-              <Link to="/admin/manage-product">
-                <li className="p-4 flex items-center justify-center gap-2 hover:bg-gray-700  border-gray-600 transition-colors">
-                  <LogOut />
-                  Logout
-                </li>
-              </Link>
+              <li
+                onClick={() => dispatch(logout())}
+                className="p-4 flex items-center justify-center gap-2 hover:bg-gray-700  border-gray-600 transition-colors"
+              >
+                <LogOut />
+                Logout
+              </li>
 
               <Link to="/">
                 <li className="p-4 flex items-center justify-center gap-2 hover:bg-gray-700  border-gray-600 transition-colors">
