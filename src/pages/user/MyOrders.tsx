@@ -1,5 +1,6 @@
 "use client";
 
+import Spinner from "@/components/Spinner";
 import { Card } from "@/components/ui/card";
 import {
   Table,
@@ -46,14 +47,8 @@ const MyOrders = () => {
   return (
     <div className="max-w-4xl mx-auto p-4">
       {isFetching && (
-        <div className="flex justify-center items-center h-32">
-          <button type="button" className="bg-[#00a76b] ..." disabled>
-            <svg
-              className="mr-3 size-5 animate-spin ..."
-              viewBox="0 0 24 24"
-            ></svg>
-            Loading....
-          </button>
+        <div className=" flex justify-center items-center">
+          <Spinner></Spinner>
         </div>
       )}
       <Card className="p-6">

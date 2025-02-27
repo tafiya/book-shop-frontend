@@ -1,3 +1,4 @@
+import Spinner from "@/components/Spinner";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -106,14 +107,8 @@ const ManageProducts: React.FC = () => {
   return (
     <>
       {isFetching && (
-        <div className="flex justify-center items-center h-32">
-          <button type="button" className="bg-[#00a76b] ..." disabled>
-            <svg
-              className="mr-3 size-5 animate-spin ..."
-              viewBox="0 0 24 24"
-            ></svg>
-            Loading....
-          </button>
+        <div className=" flex justify-center items-center">
+          <Spinner></Spinner>
         </div>
       )}
       <Card className="p-6  mx-auto">
