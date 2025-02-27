@@ -15,8 +15,7 @@ const MyProfile = () => {
   const userInfo = users.find(
     (customer: TUser) => customer.email == user?.email
   );
-  console.log(data);
-  console.log(user);
+
   return (
     <div className=" flex justify-center">
       <div className="max-w-[350px] space-y-8 rounded-2xl bg-white px-6 py-8 shadow-md dark:bg-[#18181B] md:max-w-[650px]">

@@ -29,7 +29,6 @@ const CartSheet = () => {
     useCreateOrderMutation();
 
   const handlePlaceOrder = async () => {
-    console.log(cartData.items);
     await createOrder({ products: cartData.items });
   };
 
@@ -39,7 +38,7 @@ const CartSheet = () => {
 
     if (isSuccess) {
       toast.success("Order is placed");
-      console.log(data.data);
+
       if (data?.data) {
         setTimeout(() => {
           window.location.href = data.data;

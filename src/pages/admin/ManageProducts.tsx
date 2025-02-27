@@ -55,7 +55,7 @@ const ManageProducts: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   let products = data?.data || [];
-  console.log(products);
+
   const handleRemove = async (title: string) => {
     await deleteProduct(title);
   };

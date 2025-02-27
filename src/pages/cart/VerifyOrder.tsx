@@ -58,7 +58,6 @@ export default function OrderVerification() {
   );
 
   const orderData: OrderData = data?.data?.[0];
-  console.log(orderData);
 
   return isLoading ? (
     <Skeleton />

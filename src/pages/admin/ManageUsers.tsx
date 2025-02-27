@@ -39,7 +39,7 @@ const ManageUsers = () => {
   // const handleUpdate = async (id: string) => {
   //   await updateUser(id);
   // };
-  console.log(users);
+
   return (
     <Card className="p-6  mx-auto">
       <Table>

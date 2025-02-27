@@ -38,11 +38,10 @@ const MyOrders = () => {
   });
   const orders = data?.data || [];
   const user = useAppSelector(selectCurrentUser);
-  console.log(user);
+
   const filteredOrders = orders.filter(
     (order: Order) => order.user?.email === user?.email
   );
-  console.log(filteredOrders);
 
   return (
     <div className="max-w-4xl mx-auto p-4">

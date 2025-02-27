@@ -28,7 +28,6 @@ const Login = () => {
 
   const from = location.state?.pathname || "/";
 
-  console.log({ location });
   const form = useForm({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -38,58 +37,23 @@ const Login = () => {
   });
   const [login] = useLoginMutation();
   const onsubmit: SubmitHandler<FieldValues> = async (data) => {
-    console.log(data);
-
     try {
       const userInfo = {
         email: data.email,
         password: data.password,
       };
       const res = await login(userInfo).unwrap();
-      console.log(res);
+
       const user = verifyToken(res.data.token) as TUser;
-      console.log(user);
+
       dispatch(setUser({ user: user, token: res.data.token }));
       toast.success("Successfully logged in!");
       setTimeout(() => navigate(from), 1000);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
       toast.error("Something went wrong");
     }
   };
-
-  // async function onSubmit(values: z.infer<typeof loginSchema>) {
-  //   await login(values);
-  // }
-
-  // const toastId = "login";
-  // useEffect(() => {
-  //   if (isLoading) toast.loading("Processing ...", { id: toastId });
-
-  //   if (isSuccess) {
-  //     const token = data?.token;
-  //     console.log(token);
-  //     const user = jwtDecode(token);
-  //     dispatch(setUser({ user, token }));
-  //     toast.success(data?.message, { id: toastId });
-
-  //     setTimeout(() => {
-  //       navigate(from, { state: location.state?.state, replace: true });
-  //       // window.location.reload();
-  //     }, 1000);
-  //   }
-
-  //   if (isError) toast.error(JSON.stringify(error), { id: toastId });
-  // }, [
-  //   data,
-  //   dispatch,
-  //   error,
-  //   from,
-  //   isError,
-  //   isLoading,
-  //   isSuccess,
-  //   location.state?.state,
-  //   navigate,
-  // ]);
 
   return (
     <div className="flex justify-center items-center h-screen bg-gradient-to-r from-[#ecefec] via-[#f5f3ef] to-[#f6f4f0]">

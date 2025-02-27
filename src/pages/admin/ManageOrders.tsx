@@ -33,7 +33,7 @@ const ManageOrders = () => {
     refetchOnReconnect: true,
   });
   const orders = data?.data || [];
-  console.log(orders);
+
   return (
     <div>
       <Card className="p-6">

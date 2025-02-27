@@ -1,7 +1,4 @@
-import {
-  selectCurrentUser,
-  useCurrentToken,
-} from "@/redux/features/auth/authSlice";
+import { useCurrentToken } from "@/redux/features/auth/authSlice";
 import { addToCart } from "@/redux/features/cart/cartSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { IProduct } from "@/types/product";
@@ -21,8 +18,6 @@ const ProductDetailsCard = ({ product }: { product: IProduct }) => {
   const token = useAppSelector(useCurrentToken);
   let user: CustomJwtPayload | null = null;
 
-  const Loginuser = useAppSelector(selectCurrentUser);
-  console.log("Log in", Loginuser);
   if (token) {
     user = verifyToken(token) as CustomJwtPayload;
   }

@@ -28,7 +28,7 @@ const Cart = () => {
   const handlePlacedOrder = async () => {
     try {
       const res = await createOrder({ products: cartProducts });
-      console.log(res, "result");
+
       if (res?.data?.success) {
         dispatch(clearCart());
       } else {

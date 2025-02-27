@@ -42,7 +42,7 @@ const Navbar = () => {
     (customer: TUser) => customer.email == user?.email
   );
   const cartData = useAppSelector((state) => state.cart);
-  // console.log("Logged user", userInfo.name);
+
   const navlinks = [
     {
       labe: "Home",
