@@ -1,50 +1,120 @@
-# React + TypeScript + Vite
+# Readscape
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Book Shop Application
+The **Book Shop Application** is a full-stack web application designed to provide a user-friendly shopping experience. It includes secure authentication, smooth product management, and an intuitive user interface. The platform is fully responsive, error-free, and visually appealing.
 
-Currently, two official plugins are available:
+## Tech Stack
+- **Frontend:** React.js, Tailwind CSS
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB
+- **State Management:** Redux Toolkit
+- **Authentication:** JWT (JSON Web Token)
+- **Payment Integration:** SurjoPay
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+###  User Registration & Authentication (Role-Based)
+#### Secure Registration and Login
+- Users can register with **name, address, phone no, picture email, and password**.
+- Default role: `user`. Admins need to be manually updated.
+- Passwords are securely **hashed** before storing.
+- Users can log in using **email and password**.
 
-## Expanding the ESLint configuration
+#### JWT Authentication
+- JWT token is generated upon login for secure authentication.
+- Token is stored in **local storage** to maintain user sessions.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+#### Logout
+- Clears the token from local storage and redirects users to the login page.
 
-- Configure the top-level `parserOptions` property like this:
+#### Home Page
+- **Navbar:** Logo, favicon, navigation items, and buttons for login/signup.
+- **Banner:** Showcases platform highlights or special offers.
+- **Featured Products:** Displays up to **6 products** with a "View All" button.
+- **Extra Section:** Includes **testimonials or blogs**.
+- **Footer:** Contains links, social media icons, and contact details.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+#### All Products Page
+- **Search Functionality:** Search by **title, author, or category**.
+- **Filters:** Filter by **price range, author, category, and availability**.
+- **Dynamic Results:** Updates based on **search terms** or selected filters.
+- **Product Cards:** Displays **name, author, price, and category**.
+- **View Details Button:** Redirects to **Product Details Page**.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+#### Product Details Page
+- Displays the **product image** and **detailed information**.
+- The "Buy Now" button redirects to **Checkout Page**.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+#### About Page
+- Informative page about the **book shop and its mission**.
+#### Contact Page
+- You can contact us using the contact form.   
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+#### Checkout Page
+- Users can **place orders** for products.
+- Ensures **stock validation** before processing an order.
+- **Order Form:** Includes product details, user details, total price calculation, and payment method.
+- **Payment Integration:** Uses **SurjoPay** as the payment gateway.
+- **Order Now Button:** Confirms the purchase.
+  
+**Admin Dashboard:**
+- **Manage Users**: Deactivate accounts.
+- **Manage Products**: Create, Read, Update, Delete (CRUD operations).
+- **Manage Orders**: CRUD operations.
+
+**User Dashboard:**
+- View **orders**.
+- Manage **profile settings**.
+- Update **password** (requires the current password for security).
+
+## Installation & Setup
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/yourusername/bookshop.git
+   cd bookshop
+   ```
+2. **Install dependencies:**
+   ```sh
+   npm install
+   ```
+3. **Set up environment variables:**
+   Create a `.env` file in the root directory and configure:
+   ```sh
+   MONGO_URI=your_mongodb_connection_string
+   JWT_SECRET=your_jwt_secret
+   SURJOPAY_KEY=your_surjopay_key
+   ```
+4. **Run the backend server:**
+   ```sh
+   npm run server
+   ```
+5. **Run the frontend:**
+   ```sh
+   npm start
+   ```
+
+## API Endpoints
+### Authentication
+- `POST /api/auth/register` - User registration
+- `POST /api/auth/login` - User login
+- `POST /api/auth/logout` - Logout
+
+### Products
+- `GET /api/products` - Fetch all products
+- `GET /api/products/:id` - Fetch product details
+- `POST /api/products` - Add a new product (Admin only)
+- `PUT /api/products/:id` - Update product (Admin only)
+- `DELETE /api/products/:id` - Delete product (Admin only)
+
+### Orders
+- `POST /api/orders` - Place an order
+- `GET /api/orders` - View orders (Admin/User)
+- `PUT /api/orders/:id` - Update order status (Admin only)
+- `DELETE /api/orders/:id` - Cancel order## Video Explanation
+  
+## Provide a link to a video explaining the API design and functionality:  
+[Video Link](https://www.loom.com/share/1e21ffbcc78b4713a962a5235090e3bd?sid=b83166a9-14e1-46f1-b9b0-8265fdfe2ded)
+
+## Live Link
+Provide the link to the live deployed application:  
+[Live Link](https://book-shop-server-githubnew.vercel.app/)
+
+  
