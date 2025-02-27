@@ -152,7 +152,11 @@ const AllProduct = () => {
           </div>
         </div>
         {/* Loading State */}
-        {isFetching && <Spinner></Spinner>}
+        {isFetching && (
+          <div className=" flex justify-center items-center">
+            <Spinner></Spinner>
+          </div>
+        )}
 
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-wrap gap-16 justify-center my-10">
