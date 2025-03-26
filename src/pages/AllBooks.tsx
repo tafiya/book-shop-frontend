@@ -1,5 +1,5 @@
-import { useState } from "react";
-
+// AllBooks.tsx
+import { useEffect, useState } from "react";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -13,6 +13,7 @@ import ProductCard from "@/components/home/ProductCard";
 import Spinner from "@/components/Spinner";
 import { useGetAllProductQuery } from "@/redux/features/products/productSlice";
 import { X } from "lucide-react";
+import { useSearchParams } from "react-router-dom";
 
 const AllProduct = () => {
   const [search, setSearch] = useState("");
@@ -20,7 +21,8 @@ const AllProduct = () => {
   const [category, setCategory] = useState("");
   const [inStock, setInStock] = useState("");
   const [priceSort, setPriceSort] = useState("");
-
+  const [searchParams] = useSearchParams();
+  const initialCategory = searchParams.get("category") || "";
   const queryParams = [
     { name: "page", value: 1 },
     { name: "limit", value: "10" },
@@ -33,6 +35,12 @@ const AllProduct = () => {
   const { data: productData, isFetching } = useGetAllProductQuery(queryParams, {
     refetchOnMountOrArgChange: true,
   });
+
+  useEffect(() => {
+    if (initialCategory) {
+      setCategory(initialCategory);
+    }
+  }, [initialCategory]);
 
   const authors = [...new Set(productData?.data?.map((p) => p.author))];
   const categories = [...new Set(productData?.data?.map((a) => a.category))];

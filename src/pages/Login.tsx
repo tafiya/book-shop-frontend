@@ -16,6 +16,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { GrUser, GrUserAdmin } from "react-icons/gr";
 import * as z from "zod";
 const loginSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -36,6 +37,27 @@ const Login = () => {
     },
   });
   const [login] = useLoginMutation();
+  const demoLogin = async (role: "User" | "Admin") => {
+    console.log(role);
+    const demoCredentials = {
+      User: { email: "tafiapinkey@gmail.com", password: "Tafiya1234" },
+      Admin: { email: "pinkey@gmail.com", password: "Abcd1234" },
+    };
+
+    const userInfo = demoCredentials[role];
+    console.log(userInfo);
+
+    try {
+      const res = await login(userInfo).unwrap();
+      const user = verifyToken(res.data.token) as TUser;
+      dispatch(setUser({ user: user, token: res.data.token }));
+      toast.success("Successfully logged in!");
+      setTimeout(() => navigate(from), 1000);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (err) {
+      toast.error("Something went wrong");
+    }
+  };
   const onsubmit: SubmitHandler<FieldValues> = async (data) => {
     try {
       const userInfo = {
@@ -58,14 +80,38 @@ const Login = () => {
   return (
     <div className="flex justify-center items-center h-screen bg-gradient-to-r from-[#ecefec] via-[#f5f3ef] to-[#f6f4f0]">
       {/* login div */}
-      <div className="  border-[#00a76b] border rounded-lg  lg:w-[400px] w-[350px] p-12 shadow-xl">
-        <p className="text-4xl text-[#00a76b] font-semibold border-b pb-6">
-          Login
-        </p>
+      <div className="  border-[#00a76b] border rounded-lg  lg:w-[400px] w-[350px] px-12 pb-12 pt-8 shadow-xl">
+        <div className=" flex flex-col items-center justify-center gap-2">
+          <img src="ReadScape-logo.png" className="w-14 h-14" alt="" />
+          <p className="text-4xl text-[#00a76b] font-semibold border-b pb-2">
+            Sign in
+          </p>
+        </div>
+        {/* Demo login buttons */}
+        <div className="mt-4 flex flex-col gap-4 justify-center items-center ">
+          <Button
+            variant="outline"
+            className="bg-[#00a76b] text-white py-5 w-full hover:text-[#00a76b] hover:border-[#00a76b] flex items-center gap-2 "
+            onClick={() => demoLogin("User")}
+          >
+            {" "}
+            <GrUser size={"2rem"} />
+            User's Demo Login
+          </Button>
+          <Button
+            variant="outline"
+            className="bg-[#00a76b] text-white w-full py-5 hover:text-[#00a76b] hover:border-[#00a76b] flex items-center gap-2 "
+            onClick={() => demoLogin("Admin")}
+          >
+            <GrUserAdmin size={"2rem"} />
+            Admin's Demo Login
+          </Button>
+        </div>
+
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onsubmit)}
-            className=" pt-8 space-y-7"
+            className=" pt-6 space-y-7"
           >
             <FormField
               control={form.control}
