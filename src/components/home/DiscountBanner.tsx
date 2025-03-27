@@ -20,12 +20,12 @@ const DiscountBanner: React.FC = () => {
         <p className="mt-4 text-lg md:text-xl">
           Limited time offer! Grab your favorite books now.
         </p>
-        <a
+        {/* <a
           href="/shop"
           className="mt-6 inline-block bg-blue-600 text-white py-3 px-8 rounded-full text-lg font-semibold hover:bg-blue-700 transition"
         >
           Shop Now →
-        </a>
+        </a> */}
       </div>
     </section>
   );
