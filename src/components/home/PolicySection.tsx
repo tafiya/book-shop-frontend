@@ -25,7 +25,7 @@ const features = [
 
 const PolicySection = () => {
   return (
-    <div className="bg-[#00a76b]  py-6 px-4 md:px-10">
+    <div className="bg-[#00a76b]  py-6 px-4 md:px-10 mb-12">
       <div className="max-w-7xl mx-auto flex flex-wrap justify-center items-center gap-6">
         {features.map((feature, index) => (
           <div

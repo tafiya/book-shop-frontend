@@ -18,7 +18,7 @@ import {
 import { useEffect, useState } from "react";
 import { FiMenu } from "react-icons/fi";
 import { IoCloseOutline } from "react-icons/io5";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "../ui/button";
 import {
   DropdownMenu,
@@ -29,10 +29,13 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { ScrollArea } from "../ui/scroll-area";
+import toast from "react-hot-toast";
 const Navbar = () => {
   const [isSideMenuOpen, setMenu] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
   const [scrolling, setScrolling] = useState(false);
   const [isMegaMenuOpen, setMegaMenuOpen] = useState(false);
+  const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -55,33 +58,6 @@ const Navbar = () => {
     (customer: TUser) => customer.email == user?.email
   );
   const cartData = useAppSelector((state) => state.cart);
-
-  // const navlinks = [
-  //   {
-  //     labe: "Home",
-  //     link: "/",
-  //   },
-  //   {
-  //     labe: "All Books",
-  //     link: "/allBooks",
-  //   },
-  //   {
-  //     labe: "About",
-  //     link: "/about",
-  //   },
-  //   {
-  //     labe: "Contact",
-  //     link: "/contact",
-  //   },
-  //   {
-  //     labe: "Contact",
-  //     link: "/contact",
-  //   },
-  //   {
-  //     labe: "Contact",
-  //     link: "/contact",
-  //   },
-  // ];
   const menuData = [
     { name: "Home", href: "/" },
     {
@@ -113,6 +89,17 @@ const Navbar = () => {
 
     { name: "Contact", href: "/contact" },
   ];
+  const handleSearch = () => {
+    const trimmedSearch = searchTerm.trim();
+
+    if (trimmedSearch) {
+      navigate(`/allBooks?search=${encodeURIComponent(trimmedSearch)}`);
+      setSearchTerm("");
+    } else {
+      toast.error("Please type for search");
+      // router.push(`/tutors`); // Redirect to tutors page without query params
+    }
+  };
   return (
     <div
       className={clsx(
@@ -137,20 +124,20 @@ const Navbar = () => {
           </div>
           <div
             className="relative w-96 flex-1 hidden md:flex p-1 sm:border sm:border-[#00a76b] group sm:rounded-xl 
-          sm:focus-within:ring-1 sm:focus-within:ring-[#00a76b]sm:focus-within:border-[#00a76b]"
+          sm:focus-within:ring-1 sm:focus-within:ring-[#00a76b] sm:focus-within:border-[#00a76b]"
           >
             <input
               type="name"
               name=""
-              // value={searchTerm}
-              // onChange={(e) => setSearchTerm(e.target.value)}
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search Book"
-              className="block w-full text-gray-900 placeholder-gray-900 bg-transparent border border-[#00a76b]outline-none
+              className="block w-full text-gray-900 placeholder-gray-600 text-sm bg-transparent border border-[#00a76b] outline-none
                focus:border-[#00a76b] py-1  px-4 focus:ring-1 focus:ring-[#00a76b] rounded-lg sm:border-none sm:focus:ring-0 sm:focus:border-transparent"
             />
             <div className="mt-4 sm:mt-0 sm:absolute sm:inset-y-0 sm:right-0 sm:flex sm:items-center ">
               <button
-                // onClick={handleSearch}
+                onClick={handleSearch}
                 type="submit"
                 className="inline-flex px-4 py-2.5 text-sm  text-white transition-all duration-200 bg-[#00a76b] rounded-lg focus:outline-none"
               >
@@ -181,11 +168,14 @@ const Navbar = () => {
               >
                 <input
                   type="text"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
                   placeholder="Search Book"
                   className="flex-1 w-full text-gray-900 placeholder-gray-600 text-sm bg-transparent border-none outline-none py-2 px-4 focus:ring-1 focus:ring-[#00a76b] rounded-lg sm:focus:ring-0"
                 />
                 <button
                   type="submit"
+                  onClick={handleSearch}
                   className="w-full sm:w-auto inline-flex items-center justify-center px-4 py-2.5 text-sm text-white bg-[#00a76b] rounded-lg transition-all duration-200 focus:outline-none"
                 >
                   <Search size={20} />

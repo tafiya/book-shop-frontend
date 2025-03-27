@@ -34,7 +34,7 @@ interface Product {
   author: string;
   price: number;
   imgURL: string;
-  category: "Fiction" | "Science" | "SelfDevelopment" | "Poetry" | "Religious";
+  category: string;
   description: string;
   quantity: number;
   inStock: boolean;

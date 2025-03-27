@@ -60,7 +60,7 @@ const Cart = () => {
       {cartProducts?.length ? (
         <>
           <div className="w-full flex justify-center items-center bg-gradient-to-r from-[#ecefec] via-[#f5f3ef] to-[#f6f4f0] h-64 md:h-64 ">
-            <h2 className=" pt-20 text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-semibold leading-snug text-balance">
+            <h2 className=" md:pt-20 pt-10 text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-semibold leading-snug text-balance">
               Checkout
             </h2>
           </div>

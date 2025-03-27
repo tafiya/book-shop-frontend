@@ -19,8 +19,9 @@ const Main = () => {
       <Favorite></Favorite>
       <Products></Products>
       <Parallax></Parallax>
-      <DiscountBanner></DiscountBanner>
       <ChildCategory></ChildCategory>
+      <DiscountBanner></DiscountBanner>
+
       <PolicySection></PolicySection>
       <Testimonial></Testimonial>
     </>

@@ -3,7 +3,7 @@ import React from "react";
 const DiscountBanner: React.FC = () => {
   return (
     <section
-      className="relative w-full h-[400px] md:h-[500px] flex items-center justify-center text-center bg-cover bg-center rounded-xl"
+      className="relative w-full mb-24 h-[400px] md:h-[500px] flex items-center justify-center text-center bg-cover bg-center"
       style={{
         backgroundImage:
           "url('https://res.cloudinary.com/demnpqwx3/image/upload/v1743081968/discount_ltdivt.jpg')",
