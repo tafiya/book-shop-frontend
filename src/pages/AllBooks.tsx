@@ -25,7 +25,7 @@ const AllProduct = () => {
   const initialCategory = searchParams.get("category") || "";
   const queryParams = [
     { name: "page", value: 1 },
-    { name: "limit", value: "10" },
+    { name: "limit", value: "100" },
     { name: "sort", value: priceSort || "_id" },
     ...(search ? [{ name: "searchTerm", value: search }] : []),
     ...(author ? [{ name: "author", value: author }] : []),
@@ -53,8 +53,8 @@ const AllProduct = () => {
 
   return (
     <div className=" ">
-      <div className="w-full flex justify-center items-center bg-gradient-to-r from-[#ecefec] via-[#f5f3ef] to-[#f6f4f0] h-64 md:h-80 ">
-        <div className=" mt-16">
+      <div className="w-full flex justify-center items-center bg-gradient-to-r from-[#ecefec] via-[#f5f3ef] to-[#f6f4f0] h-64 md:h-[370px] ">
+        <div className=" md:pt-40 pt-16">
           <h2 className=" text-xl sm:text-2xl md:text-3xl xl:text-4xl font-semibold leading-snug text-balance text-center">
             Find the <span className=" text-[#00a76b]">Perfect </span>
             <br />

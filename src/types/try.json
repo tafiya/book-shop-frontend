@@ -1,0 +1,92 @@
+[
+    {
+      "title": "The Very Hungry Caterpillar",
+      "author": "Eric Carle",
+      "price": 159,
+      "imgURL": "https://res.cloudinary.com/demnpqwx3/image/upload/v1743087158/hungry_lccjyi.png",
+      "category": "Children",
+      "description": "A classic children's book that follows the journey of a hungry caterpillar as it eats its way through a variety of foods before transforming into a butterfly.",
+      "quantity": 50,
+      "inStock": true,
+      "isDeleted": false
+    },
+    {
+        "title": "Chicka Chicka Boom Boom ",
+        "author": "Bill Martin Jr.",
+        "price": 119,
+        "imgURL": "https://res.cloudinary.com/demnpqwx3/image/upload/v1743087261/chika_oobmki.png",
+        "category": "Children",
+        "description": "Countless children—and their parents—can joyfully recite the familiar words of this beloved alphabet chant. Bill Martin, Jr., and John Archambault’s rhythmic text keeps the beat with Caldecott Honor illustrator Lois Ehlert’s bold, cheerful art. This winning combination has made the Chicka Chicka series an enduring classic.",
+        "quantity": 30,
+        "inStock": true,
+        "isDeleted": false
+      }
+  ,
+    {
+      "title": "Harry Potter and the Sorcerer's Stone",
+      "author": "J.K. Rowling",
+      "price": 109,
+      "imgURL": "https://res.cloudinary.com/demnpqwx3/image/upload/v1743087273/harry_rmdlbc.png",
+      "category": "Adventure",
+      "description": "The first book in the Harry Potter series, where Harry discovers his magical heritage and attends Hogwarts School of Witchcraft and Wizardry.",
+      "quantity": 35,
+      "inStock": true,
+      "isDeleted": false
+    },
+    {
+      "title": "Treasure Island",
+      "author": "Robert Louis Stevenson",
+      "price": 284,
+      "imgURL": "https://res.cloudinary.com/demnpqwx3/image/upload/v1743087314/treasure_zs0nlw.png",
+      "category": "Adventure",
+      "description": "A thrilling tale of pirates and treasure hunting, following the journey of young Jim Hawkins.",
+      "quantity": 25,
+      "inStock": true,
+      "isDeleted": false
+    },
+    {
+      "title": "Charlie and the Chocolate Factory",
+      "author": "Roald Dahl",
+      "price": 169,
+      "imgURL": "https://res.cloudinary.com/demnpqwx3/image/upload/v1743087329/Charli_vvlb2j.png",
+      "category": "Children",
+      "description": "The story of Charlie Bucket, a boy who wins a golden ticket to visit Willy Wonka's magical chocolate factory.",
+      "quantity": 45,
+      "inStock": true,
+      "isDeleted": false
+    },
+    {
+      "title": "The Hobbit",
+      "author": "J.R.R. Tolkien",
+      "price": 129,
+      "imgURL": "https://res.cloudinary.com/demnpqwx3/image/upload/v1743087352/habit_wud1ba.png",
+      "category": "Adventure",
+      "description": "Bilbo Baggins embarks on a quest with dwarves to reclaim a treasure guarded by the dragon Smaug.",
+      "quantity": 30,
+      "inStock": true,
+      "isDeleted": false
+    },
+    {
+        "title": "Where's Spot? ",
+        "author": " Eric Hill ",
+        "price": 139,
+        "imgURL": "https://res.cloudinary.com/demnpqwx3/image/upload/v1743087421/spot_p4sbx6.png",
+        "category": "Children",
+        "description": "Bilbo Baggins embarks on a quest with dwarves to reclaim a treasure guarded by the dragon Smaug.",
+        "quantity": 30,
+        "inStock": true,
+        "isDeleted": false
+      },
+      {
+        "title": "Where the Wild Things Are",
+        "author": "Maurice Sendak",
+        "price": 179,
+        "imgURL": "https://res.cloudinary.com/demnpqwx3/image/upload/v1743087411/where_gniewg.png",
+        "category": "Children",
+        "description": "The story of Max, a young boy who sails to an island inhabited by wild creatures and becomes their king.",
+        "quantity": 40,
+        "inStock": true,
+        "isDeleted": false
+      }
+  ]
+  

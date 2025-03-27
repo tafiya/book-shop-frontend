@@ -1,21 +1,13 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Button } from "../ui/button";
 import "./Banner.css";
-
-// Import Swiper styles
-// import "swiper/css";
-
-// import "swiper/css/effect-cards";
-// import "./styles.css";
-
-// import required modules
 import { IoBookOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { Autoplay, EffectCards } from "swiper/modules";
 const Banner = () => {
   return (
     <div className="bg-gradient-to-r from-[#ecefec] via-[#f5f3ef] to-[#f6f4f0] ... lg:h-screen h-[130vh]">
-      <div className=" flex lg:flex-row flex-col items-center justify-center md:py-40 py-36 max-w-7xl mx-auto xl:gap-12 gap-8 ">
+      <div className=" flex lg:flex-row flex-col items-center justify-center md:pt-40 pt-36 max-w-7xl mx-auto xl:gap-12 gap-8 ">
         {/* text div */}
         <div className=" lg:w-1/2 space-y-6 w-[80%] ">
           <h2 className=" text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-semibold leading-snug text-balance">

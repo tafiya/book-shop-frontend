@@ -3,7 +3,7 @@ export interface IProduct {
   title: string;
   author: string;
   price: number;
-  category: "Fiction" | "Science" | "SelfDevelopment" | "Poetry" | "Religious";
+  category: string;
   description: string;
   quantity: number;
   inStock: boolean;
@@ -36,9 +36,7 @@ export type TTransaction = {
 
 export type TOrder = {
   _id: string;
-
   product: IProduct;
-
   orderQuantity: number;
   totalPrice: number;
   estimatedDeliveryDate: Date;
