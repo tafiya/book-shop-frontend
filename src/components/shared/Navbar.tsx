@@ -84,8 +84,6 @@ const Navbar = () => {
     },
     { name: "All Books", href: "/allBooks" },
     { name: "About", href: "/about" },
-    { name: "Blogs", href: "/blogs" },
-    { name: "FAQ", href: "/faq" },
 
     { name: "Contact", href: "/contact" },
   ];
