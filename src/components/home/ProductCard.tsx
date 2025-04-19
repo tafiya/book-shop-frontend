@@ -41,10 +41,10 @@ const ProductCard = ({ product }: { product: IProduct }) => {
     }
   };
   return (
-    <div className="bg-white rounded-lg overflow-hidden shadow-2xl xl:w-1/5 lg:w-1/4 md:w-1/3 sm:w-1/2  group">
+    <div className="bg-white rounded-lg overflow-hidden h-96 shadow-2xl xl:w-1/5 lg:w-1/4 md:w-1/3 sm:w-1/2  group">
       <div className="relative">
         <img
-          className="h-80 w-full object-cover object-end"
+          className="h-60 w-full object-cover object-end"
           src={product.imgURL}
           alt="Home in Countryside"
         />
@@ -58,26 +58,23 @@ const ProductCard = ({ product }: { product: IProduct }) => {
         </Link>
       </div>
 
-      <div className="p-6">
+      <div className="px-4 py-3">
         <div className="flex items-baseline">
-          <span className="inline-block border-[#00a76b] border text-[#00a76b] py-1 px-4 text-xs rounded-full uppercase font-semibold tracking-wide">
+          <span className="inline-block border-[#00a76b] border text-[#00a76b] py-0.5 px-4 text-[10px] rounded-full uppercase font-semibold tracking-wide">
             {product.category}
           </span>
-          {/* <div className="ml-2 text-gray-600 text-xs uppercase font-semibold tracking-wide">
-            3 beds &bull; 2 baths
-          </div> */}
         </div>
-        <h4 className="mt-2 font-semibold text-lg leading-tight truncate">
+        <h4 className="mt-2 font-semibold text-lg leading-tight text-black truncate">
           {product.title}
         </h4>
-        <div className="mt-1 truncate">
+        <div className="mt-1 truncate text-gray-600">
           <span>{product.author}</span>
         </div>
-        <div className="pt-6 flex justify-between">
+        <div className="pt-2 flex  gap-2 items-center justify-between">
           <Button
             onClick={() => handleAddToCart()}
             variant="outline"
-            className=" py-2  bg-[#00a76b] text-white hover:text-[#00a76b] text-base hover:border-[#00a76b] flex items-center"
+            className=" py-2  bg-[#00a76b] text-white hover:text-[#00a76b] text-sm hover:border-[#00a76b] flex items-center"
           >
             {" "}
             <ShoppingCart />

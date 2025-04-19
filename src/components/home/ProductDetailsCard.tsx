@@ -86,12 +86,20 @@ const ProductDetailsCard = ({ product }: { product: IProduct }) => {
       </div>
       <div className="py-12 px-6 lg:px-12 max-w-xl lg:max-w-5xl lg:w-1/2 rounded-t-none border lg:rounded-lg">
         <h2 className="text-3xl text-gray-800 font-bold">{product?.title}</h2>
-        <p className="mt-4 text-gray-600">By: {product?.author}</p>
-        <p className="mt-4 text-gray-600">Category: {product?.category}</p>
+        <p className="mt-4 text-gray-600 font-medium">
+          {" "}
+          <span className="text-[#00a76b] font-semibold">By:</span> {product?.author}
+        </p>
+        <p className="mt-4 text-gray-800 flex font-semibold items-baseline gap-2">
+          Category:{" "}
+          <span className="inline-block border-[#00a76b] border text-[#00a76b] py-0.5 px-4 text-[10px] rounded-full uppercase font-semibold tracking-wide">
+            {product.category}
+          </span>
+        </p>
         <p className="my-4 text-gray-600">{product?.description}</p>
         <hr />
-        <p className="mt-4 text-gray-600">{product?.quantity} in Stock</p>
-        <p className="mt-4 text-gray-600">${product?.price}</p>
+        <p className="mt-4 text-[#00a76b] font-semibold">{product?.quantity} in Stock</p>
+        <p className="mt-4 font-medium text-red-600">BDT {product?.price}</p>
         <div className="mt-8 flex gap-6">
           <button
             onClick={handleAddToCart}
